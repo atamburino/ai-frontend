@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import {
-  Box,
   VStack,
   Heading,
-  Text,
   Container,
-  Input,
-  Button,
   useToast
 } from '@chakra-ui/react';
 import api from './api';
+import TextInputForm from './components/TextInputForm';
+import ResultsDisplay from './components/ResultsDisplay';
 
 function App() {
   const [data, setData] = useState(null);
@@ -46,48 +44,13 @@ function App() {
       <VStack spacing={8} align="stretch">
         <Heading>AI Text Generator</Heading>
         
-        <Box p={6} shadow="md" borderWidth="1px" borderRadius="lg" bg="white">
-          <VStack spacing={4} align="stretch">
-            <Text fontSize="lg" color="gray.600">
-              Enter your text below and our AI will process it for you. 
-              You can type anything you'd like to analyze or transform.
-            </Text>
+        <TextInputForm 
+          inputText={inputText}
+          setInputText={setInputText}
+          onSubmit={handleSubmit}
+        />
 
-            <Box>
-              <Text mb={2} fontWeight="medium">Your Text</Text>
-              <Input
-                placeholder="Type your text here..."
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                size="lg"
-                variant="filled"
-              />
-              <Text mt={2} fontSize="sm" color="gray.600">
-                The text will be sent to our AI model for processing
-              </Text>
-            </Box>
-
-            <Button
-              colorScheme="blue"
-              size="lg"
-              onClick={handleSubmit}
-              isDisabled={!inputText.trim()}
-            >
-              Process Text
-            </Button>
-          </VStack>
-        </Box>
-
-        {data && (
-          <Box p={6} shadow="md" borderWidth="1px" borderRadius="lg" bg="white">
-            <VStack spacing={4} align="stretch">
-              <Heading size="md">Results</Heading>
-              <Text whiteSpace="pre-wrap">
-                {JSON.stringify(data, null, 2)}
-              </Text>
-            </VStack>
-          </Box>
-        )}
+        <ResultsDisplay data={data} />
       </VStack>
     </Container>
   );
