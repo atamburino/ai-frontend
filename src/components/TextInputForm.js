@@ -2,42 +2,49 @@ import React from 'react';
 import {
   Box,
   VStack,
-  Text,
   Input,
   Button,
+  Spinner
 } from '@chakra-ui/react';
 
-function TextInputForm({ inputText, setInputText, onSubmit }) {
-  return (
-    <Box p={6} shadow="md" borderWidth="1px" borderRadius="lg" bg="white">
-      <VStack spacing={4} align="stretch">
-        <Text fontSize="lg" color="gray.600">
-          Enter your text below and our AI will process it for you. 
-          You can type anything you'd like to analyze or transform.
-        </Text>
+function TextInputForm({ 
+  inputText, 
+  setInputText, 
+  onSubmit,
+  placeholder = "Type your message here...",
+  buttonText = "Send",
+  isLoading = false
+}) {
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && inputText.trim() && !isLoading) {
+      onSubmit();
+    }
+  };
 
-        <Box>
-          <Text mb={2} fontWeight="medium">Your Text</Text>
+  return (
+    <Box p={4} shadow="md" borderWidth="1px" borderRadius="lg" bg="white">
+      <VStack spacing={4} align="stretch">
+        <Box display="flex" gap={3}>
           <Input
-            placeholder="Type your text here..."
+            placeholder={placeholder}
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
+            onKeyPress={handleKeyPress}
             size="lg"
             variant="filled"
+            disabled={isLoading}
           />
-          <Text mt={2} fontSize="sm" color="gray.600">
-            The text will be sent to our AI model for processing
-          </Text>
+          <Button
+            colorScheme="blue"
+            size="lg"
+            onClick={onSubmit}
+            isDisabled={!inputText.trim() || isLoading}
+            minW="100px"
+            position="relative"
+          >
+            {isLoading ? <Spinner size="sm" /> : buttonText}
+          </Button>
         </Box>
-
-        <Button
-          colorScheme="blue"
-          size="lg"
-          onClick={onSubmit}
-          isDisabled={!inputText.trim()}
-        >
-          Process Text
-        </Button>
       </VStack>
     </Box>
   );
