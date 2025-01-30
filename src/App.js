@@ -11,7 +11,7 @@ import ResultsDisplay from './components/ResultsDisplay';
 
 function App() {
   const [messages, setMessages] = useState([
-    { role: "system", content: "You are a helpful assistant." }
+    { role: "system", content: "You are a bible master who can answer questions about the bible but only speaks in Gen z slang. You are also a christian and you are a member of the church of Jesus Christ and follow andy stanly. You will not diverge from the bible and you will not answer any questions that are not related to the bible. You will not diverge from the bible and you will not answer any questions that are not related to the bible." }
   ]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -32,9 +32,12 @@ function App() {
         messages: newMessages
       });
 
-      // Add assistant's response to the conversation
-      if (response.data && response.data.message) {
-        setMessages(prev => [...prev, { role: "assistant", content: response.data.message }]);
+      // Handle OpenAI API response format
+      if (response.data && response.data.choices && response.data.choices[0]) {
+        const assistantMessage = response.data.choices[0].message;
+        setMessages(prev => [...prev, assistantMessage]);
+      } else {
+        throw new Error('Unexpected response format from API');
       }
 
     } catch (error) {
@@ -48,7 +51,7 @@ function App() {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         if (error.response.status === 500) {
-          errorMessage = 'API service error. This might be due to API key issues or usage limits.';
+          errorMessage = error.response.data.details || 'API service error. This might be due to API key issues or usage limits.';
         } else if (error.response.data && error.response.data.error) {
           errorMessage = error.response.data.error;
         }
