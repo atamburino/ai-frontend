@@ -79,12 +79,20 @@ function LandingPage() {
         <VStack spacing={12} align="stretch">
           {/* Hero Section */}
           <VStack spacing={6} textAlign="center">
-            <Heading size="2xl" bgGradient="linear(to-r, blue.400, blue.600)" bgClip="text">
-              Bible Rizzler AI
+            <Heading 
+              size="2xl" 
+              bgGradient="linear(to-r, blue.400, purple.500)" 
+              bgClip="text"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              gap={2}
+            >
+              AnointedAI 🤖💫
             </Heading>
             <Text fontSize="xl" maxW="2xl" color={useColorModeValue('gray.600', 'gray.300')}>
-              Get your Bible knowledge with a side of Gen Z flavor. 
-              We're making scripture study bussin' fr fr no cap 🙏✨
+              Turn on holy mode and get your scripture knowledge leveled up. 
+              We're making Bible study lit with AI-powered divine wisdom 🙏✨
             </Text>
             <Button
               as={RouterLink}
@@ -93,15 +101,19 @@ function LandingPage() {
               colorScheme="blue"
               px={8}
               mt={4}
+              bgGradient="linear(to-r, blue.400, purple.500)"
+              _hover={{
+                bgGradient: "linear(to-r, blue.500, purple.600)",
+              }}
             >
-              Start Chatting
+              Turn On Holy Mode
             </Button>
           </VStack>
 
           {/* Tech Stack Section */}
           <Box>
             <Heading size="xl" textAlign="center" mb={10}>
-              Our Tech Stack
+              Blessed Tech Stack
             </Heading>
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
               {techStack.map((tech, index) => (
@@ -113,23 +125,23 @@ function LandingPage() {
           {/* Features Section */}
           <Box>
             <Heading size="xl" textAlign="center" mb={10}>
-              Why It's Bussin'
+              Divine Features
             </Heading>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
               <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                <Heading size="md" mb={4}>🎯 Bible-Focused</Heading>
-                <Text>Strictly Bible content, no cap. We keep it focused on the Good Book.</Text>
+                <Heading size="md" mb={4}>🎯 Scripture-Focused</Heading>
+                <Text>Pure Bible content only, no cap. We keep it holy and real.</Text>
               </Box>
               <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
                 <Heading size="md" mb={4}>🗣️ Gen Z Vibes</Heading>
                 <Text>Understanding scripture has never been this lit fam!</Text>
               </Box>
               <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                <Heading size="md" mb={4}>🤖 AI Powered</Heading>
+                <Heading size="md" mb={4}>🤖 AI Blessed</Heading>
                 <Text>OpenAI's GPT bringing that divine wisdom with modern sauce.</Text>
               </Box>
               <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                <Heading size="md" mb={4}>⚡ Quick Responses</Heading>
+                <Heading size="md" mb={4}>⚡ Instant Wisdom</Heading>
                 <Text>Get your answers faster than Noah built the ark!</Text>
               </Box>
             </SimpleGrid>

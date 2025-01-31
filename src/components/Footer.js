@@ -35,12 +35,12 @@ function Footer() {
           <Divider />
           
           <Text fontSize="sm" color={textColor} textAlign="center">
-            This AI assistant is designed to help with Bible-related questions in a fun way.
+            AnointedAI: Where divine wisdom meets modern tech.
             Always verify information with official sources.
           </Text>
           
           <Text fontSize="xs" color={textColor}>
-            © {new Date().getFullYear()} Bible Rizzler AI. No cap fr fr 💯
+            © {new Date().getFullYear()} AnointedAI 🤖💫 - Blessed by the algorithm
           </Text>
         </VStack>
       </Container>
