@@ -17,8 +17,9 @@ function TextInputForm({
   isLoading = false
 }) {
   const [inputText, setInputText] = useState('');
-  const bgColor = useColorModeValue('white', 'gray.700');
-  const inputBg = useColorModeValue('gray.100', 'gray.600');
+  const bgColor = useColorModeValue('white', 'gray.800');
+  const inputBg = useColorModeValue('purple.50', 'gray.700');
+  const borderColor = useColorModeValue('purple.100', 'purple.700');
 
   const handleSubmit = () => {
     if (inputText.trim() && !isLoading) {
@@ -34,7 +35,14 @@ function TextInputForm({
   };
 
   return (
-    <Box p={4} shadow="md" borderWidth="1px" borderRadius="lg" bg={bgColor}>
+    <Box 
+      p={4} 
+      shadow="md" 
+      borderWidth="1px" 
+      borderRadius="lg" 
+      bg={bgColor}
+      borderColor={borderColor}
+    >
       <VStack spacing={4} align="stretch">
         <Box display="flex" gap={3}>
           <Input
@@ -46,11 +54,17 @@ function TextInputForm({
             variant="filled"
             bg={inputBg}
             _hover={{ bg: inputBg }}
-            _focus={{ bg: inputBg }}
+            _focus={{ 
+              bg: inputBg,
+              borderColor: 'purple.300',
+            }}
             disabled={isLoading}
           />
           <Button
-            colorScheme="blue"
+            bgGradient="linear(to-r, blue.400, purple.500)"
+            _hover={{
+              bgGradient: "linear(to-r, blue.500, purple.600)",
+            }}
             size="lg"
             onClick={handleSubmit}
             isDisabled={!inputText.trim() || isLoading}

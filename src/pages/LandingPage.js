@@ -17,8 +17,10 @@ import { SiChakraui, SiOpenai, SiJavascript, SiExpress } from 'react-icons/si';
 import PageTransition from '../components/PageTransition';
 
 function TechCard({ icon, title, description }) {
-  const bgColor = useColorModeValue('white', 'gray.700');
-  const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const bgColor = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('purple.100', 'purple.700');
+  const iconColor = useColorModeValue('purple.500', 'purple.300');
+  const descriptionColor = useColorModeValue('purple.600', 'purple.200');
 
   return (
     <Box
@@ -28,12 +30,34 @@ function TechCard({ icon, title, description }) {
       borderRadius="lg"
       bg={bgColor}
       textAlign="center"
-      transition="all 0.2s"
-      _hover={{ transform: 'translateY(-5px)', shadow: 'lg' }}
+      transition="all 0.3s"
+      _hover={{ 
+        transform: 'translateY(-5px)', 
+        shadow: 'lg',
+        borderColor: useColorModeValue('purple.300', 'purple.500'),
+        bgGradient: useColorModeValue(
+          'linear(to-b, white, purple.50)',
+          'linear(to-b, gray.800, purple.900)'
+        )
+      }}
     >
-      <Icon as={icon} boxSize={10} color="blue.500" mb={4} />
-      <Heading size="md" mb={2}>{title}</Heading>
-      <Text color={useColorModeValue('gray.600', 'gray.300')} fontSize="sm">
+      <Icon 
+        as={icon} 
+        boxSize={12} 
+        color={iconColor}
+        mb={4}
+        transition="all 0.3s"
+        _groupHover={{ transform: 'scale(1.1)' }}
+      />
+      <Heading 
+        size="md" 
+        mb={2}
+        bgGradient="linear(to-r, blue.400, purple.500)"
+        bgClip="text"
+      >
+        {title}
+      </Heading>
+      <Text color={descriptionColor} fontSize="sm">
         {description}
       </Text>
     </Box>
@@ -114,7 +138,13 @@ function LandingPage() {
 
             {/* Tech Stack Section */}
             <Box>
-              <Heading size="xl" textAlign="center" mb={10}>
+              <Heading 
+                size="xl" 
+                textAlign="center" 
+                mb={10}
+                bgGradient="linear(to-r, blue.400, purple.500)"
+                bgClip="text"
+              >
                 Blessed Tech Stack
               </Heading>
               <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
