@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import api from "./api";
 import Layout from "./components/Layout";
 import LandingPage from "./pages/LandingPage";
@@ -81,26 +81,24 @@ function App() {
   };
 
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route
-            path="/chat"
-            element={
-              <ChatPage
-                messages={messages}
-                inputText={inputText}
-                setInputText={setInputText}
-                handleSubmit={handleSubmit}
-                isLoading={isLoading}
-              />
-            }
-          />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/chat"
+          element={
+            <ChatPage
+              messages={messages}
+              inputText={inputText}
+              setInputText={setInputText}
+              handleSubmit={handleSubmit}
+              isLoading={isLoading}
+            />
+          }
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Layout>
   );
 }
 
