@@ -156,25 +156,131 @@ function LandingPage() {
 
             {/* Features Section */}
             <Box>
-              <Heading size="xl" textAlign="center" mb={10}>
+              <Heading 
+                size="xl" 
+                textAlign="center" 
+                mb={10}
+                bgGradient="linear(to-r, blue.400, purple.500)"
+                bgClip="text"
+              >
                 Divine Features
               </Heading>
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-                <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                  <Heading size="md" mb={4}>🎯 Scripture-Focused</Heading>
-                  <Text>Pure Bible content only, no cap. We keep it holy and real.</Text>
+                <Box 
+                  p={6} 
+                  borderRadius="lg" 
+                  borderWidth="1px"
+                  borderColor={useColorModeValue('purple.100', 'purple.700')}
+                  bg={useColorModeValue('white', 'gray.800')}
+                  transition="all 0.3s"
+                  _hover={{ 
+                    transform: 'translateY(-3px)',
+                    shadow: 'lg',
+                    borderColor: useColorModeValue('purple.300', 'purple.500'),
+                    bgGradient: useColorModeValue(
+                      'linear(to-b, white, purple.50)',
+                      'linear(to-b, gray.800, purple.900)'
+                    )
+                  }}
+                >
+                  <Heading 
+                    size="md" 
+                    mb={4}
+                    bgGradient="linear(to-r, blue.400, purple.500)"
+                    bgClip="text"
+                  >
+                    🎯 Scripture-Focused
+                  </Heading>
+                  <Text color={useColorModeValue('purple.600', 'purple.200')}>
+                    Pure Bible content only, no cap. We keep it holy and real.
+                  </Text>
                 </Box>
-                <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                  <Heading size="md" mb={4}>🗣️ Gen Z Vibes</Heading>
-                  <Text>Understanding scripture has never been this lit fam!</Text>
+                <Box 
+                  p={6} 
+                  borderRadius="lg" 
+                  borderWidth="1px"
+                  borderColor={useColorModeValue('purple.100', 'purple.700')}
+                  bg={useColorModeValue('white', 'gray.800')}
+                  transition="all 0.3s"
+                  _hover={{ 
+                    transform: 'translateY(-3px)',
+                    shadow: 'lg',
+                    borderColor: useColorModeValue('purple.300', 'purple.500'),
+                    bgGradient: useColorModeValue(
+                      'linear(to-b, white, purple.50)',
+                      'linear(to-b, gray.800, purple.900)'
+                    )
+                  }}
+                >
+                  <Heading 
+                    size="md" 
+                    mb={4}
+                    bgGradient="linear(to-r, blue.400, purple.500)"
+                    bgClip="text"
+                  >
+                    🗣️ Gen Z Vibes
+                  </Heading>
+                  <Text color={useColorModeValue('purple.600', 'purple.200')}>
+                    Understanding scripture has never been this lit fam!
+                  </Text>
                 </Box>
-                <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                  <Heading size="md" mb={4}>🤖 AI Blessed</Heading>
-                  <Text>OpenAI's GPT bringing that divine wisdom with modern sauce.</Text>
+                <Box 
+                  p={6} 
+                  borderRadius="lg" 
+                  borderWidth="1px"
+                  borderColor={useColorModeValue('purple.100', 'purple.700')}
+                  bg={useColorModeValue('white', 'gray.800')}
+                  transition="all 0.3s"
+                  _hover={{ 
+                    transform: 'translateY(-3px)',
+                    shadow: 'lg',
+                    borderColor: useColorModeValue('purple.300', 'purple.500'),
+                    bgGradient: useColorModeValue(
+                      'linear(to-b, white, purple.50)',
+                      'linear(to-b, gray.800, purple.900)'
+                    )
+                  }}
+                >
+                  <Heading 
+                    size="md" 
+                    mb={4}
+                    bgGradient="linear(to-r, blue.400, purple.500)"
+                    bgClip="text"
+                  >
+                    🤖 AI Blessed
+                  </Heading>
+                  <Text color={useColorModeValue('purple.600', 'purple.200')}>
+                    OpenAI's GPT bringing that divine wisdom with modern sauce.
+                  </Text>
                 </Box>
-                <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                  <Heading size="md" mb={4}>⚡ Instant Wisdom</Heading>
-                  <Text>Get your answers faster than Noah built the ark!</Text>
+                <Box 
+                  p={6} 
+                  borderRadius="lg" 
+                  borderWidth="1px"
+                  borderColor={useColorModeValue('purple.100', 'purple.700')}
+                  bg={useColorModeValue('white', 'gray.800')}
+                  transition="all 0.3s"
+                  _hover={{ 
+                    transform: 'translateY(-3px)',
+                    shadow: 'lg',
+                    borderColor: useColorModeValue('purple.300', 'purple.500'),
+                    bgGradient: useColorModeValue(
+                      'linear(to-b, white, purple.50)',
+                      'linear(to-b, gray.800, purple.900)'
+                    )
+                  }}
+                >
+                  <Heading 
+                    size="md" 
+                    mb={4}
+                    bgGradient="linear(to-r, blue.400, purple.500)"
+                    bgClip="text"
+                  >
+                    ⚡ Instant Wisdom
+                  </Heading>
+                  <Text color={useColorModeValue('purple.600', 'purple.200')}>
+                    Get your answers faster than Noah built the ark!
+                  </Text>
                 </Box>
               </SimpleGrid>
             </Box>
