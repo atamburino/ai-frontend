@@ -4,8 +4,11 @@ import {
   VStack,
   Input,
   Button,
-  Spinner
+  Spinner,
+  useColorModeValue,
+  Icon,
 } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 function TextInputForm({ 
   inputText, 
@@ -15,6 +18,9 @@ function TextInputForm({
   buttonText = "Send",
   isLoading = false
 }) {
+  const bgColor = useColorModeValue('white', 'gray.700');
+  const inputBg = useColorModeValue('gray.100', 'gray.600');
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey && inputText.trim() && !isLoading) {
       onSubmit();
@@ -22,7 +28,7 @@ function TextInputForm({
   };
 
   return (
-    <Box p={4} shadow="md" borderWidth="1px" borderRadius="lg" bg="white">
+    <Box p={4} shadow="md" borderWidth="1px" borderRadius="lg" bg={bgColor}>
       <VStack spacing={4} align="stretch">
         <Box display="flex" gap={3}>
           <Input
@@ -32,6 +38,9 @@ function TextInputForm({
             onKeyPress={handleKeyPress}
             size="lg"
             variant="filled"
+            bg={inputBg}
+            _hover={{ bg: inputBg }}
+            _focus={{ bg: inputBg }}
             disabled={isLoading}
           />
           <Button
@@ -39,10 +48,20 @@ function TextInputForm({
             size="lg"
             onClick={onSubmit}
             isDisabled={!inputText.trim() || isLoading}
-            minW="100px"
+            minW={{ base: '44px', md: '100px' }}
+            px={{ base: 0, md: 4 }}
             position="relative"
           >
-            {isLoading ? <Spinner size="sm" /> : buttonText}
+            {isLoading ? (
+              <Spinner size="sm" />
+            ) : (
+              <>
+                <Box display={{ base: 'none', md: 'block' }}>{buttonText}</Box>
+                <Box display={{ base: 'block', md: 'none' }}>
+                  <Icon as={ArrowForwardIcon} />
+                </Box>
+              </>
+            )}
           </Button>
         </Box>
       </VStack>
