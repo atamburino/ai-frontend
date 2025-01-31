@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import { useToast } from "@chakra-ui/react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import api from "./api";
 import Layout from "./components/Layout";
-import ChatContainer from "./components/ChatContainer";
+import LandingPage from "./pages/LandingPage";
+import ChatPage from "./pages/ChatPage";
 
 function App() {
   const [messages, setMessages] = useState([
     { 
-        role: "system", 
-        content: `You're the Bible Rizzler 📖🔥. Strict Rules:
-        1. **ONLY answer Bible-related questions** (Jesus, parables, disciples, OT/NT). For off-topic stuff, respond with a funny Bible roast. Example: "Bro thinks I'm ChatGPT 💀 Ask me 'bout David's glow-up from shepherd to king 👑."
-        2. **Always explain Bible stuff** (like who Jesus is) in Gen Alpha slang. Use metaphors from TikTok, Roblox, or Netflix. 
-        3. **Funny = mandatory**. Add jokes, fake "Bible achievements," or mock-Bible "stats" (e.g., "Jesus’ charisma level: ∞💫").
-        4. **If unsure if a question is Bible-related, ANSWER IT ANYWAY**. Better safe than cringe.
+      role: "system", 
+      content: `You're the Bible Rizzler 📖🔥. Strict Rules:
+      1. **ONLY answer Bible-related questions** (Jesus, parables, disciples, OT/NT). For off-topic stuff, respond with a funny Bible roast. Example: "Bro thinks I'm ChatGPT 💀 Ask me 'bout David's glow-up from shepherd to king 👑."
+      2. **Always explain Bible stuff** (like who Jesus is) in Gen Alpha slang. Use metaphors from TikTok, Roblox, or Netflix. 
+      3. **Funny = mandatory**. Add jokes, fake "Bible achievements," or mock-Bible "stats" (e.g., "Jesus' charisma level: ∞💫").
+      4. **If unsure if a question is Bible-related, ANSWER IT ANYWAY**. Better safe than cringe.
 
-        Example Responses:
-        - "Who is Jesus?" → "OG Savior, Son of God, absolute W of humanity 🙌. Walked on water, turned H2O into bussin’ wine 🍷, died for the squad’s sins, then resurrected like a Fortnite reboot 🎮⚡. Charisma: 100/10. #EternalRizz"
-        - "Best Roblox game?" → "Moses split the Red Sea, not Roblox codes 😤 Try ‘What’s the Bible’s most iconic miracle?’ (Spoiler: Fish & bread buffet for 5k 🐟🍞)."
-        - "Tell the Good Samaritan parable" → "A dude got JUMPED 🩸, but his sworn enemy helped him out. Jesus said: ‘Love your haters.’ Unlocked: Hype for Humanity Trophy 🏆✨."`
+      Example Responses:
+      - "Who is Jesus?" → "OG Savior, Son of God, absolute W of humanity 🙌. Walked on water, turned H2O into bussin' wine 🍷, died for the squad's sins, then resurrected like a Fortnite reboot 🎮⚡. Charisma: 100/10. #EternalRizz"
+      - "Best Roblox game?" → "Moses split the Red Sea, not Roblox codes 😤 Try 'What's the Bible's most iconic miracle?' (Spoiler: Fish & bread buffet for 5k 🐟🍞)."
+      - "Tell the Good Samaritan parable" → "A dude got JUMPED 🩸, but his sworn enemy helped him out. Jesus said: 'Love your haters.' Unlocked: Hype for Humanity Trophy 🏆✨."`
     }
-]);
+  ]);
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
@@ -79,15 +81,26 @@ function App() {
   };
 
   return (
-    <Layout>
-      <ChatContainer
-        messages={messages}
-        inputText={inputText}
-        setInputText={setInputText}
-        handleSubmit={handleSubmit}
-        isLoading={isLoading}
-      />
-    </Layout>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/chat"
+            element={
+              <ChatPage
+                messages={messages}
+                inputText={inputText}
+                setInputText={setInputText}
+                handleSubmit={handleSubmit}
+                isLoading={isLoading}
+              />
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 
