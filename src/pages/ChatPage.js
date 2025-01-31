@@ -1,15 +1,21 @@
 import React from 'react';
-import ChatContainer from '../components/ChatContainer';
+import { Box, Container } from '@chakra-ui/react';
+import TextInputForm from '../components/TextInputForm';
+import ResultsDisplay from '../components/ResultsDisplay';
+import PageTransition from '../components/PageTransition';
 
-function ChatPage({ messages, inputText, setInputText, handleSubmit, isLoading }) {
+function ChatPage({ messages, onSendMessage }) {
   return (
-    <ChatContainer
-      messages={messages}
-      inputText={inputText}
-      setInputText={setInputText}
-      handleSubmit={handleSubmit}
-      isLoading={isLoading}
-    />
+    <PageTransition>
+      <Box py={8}>
+        <Container maxW="container.xl">
+          <ResultsDisplay messages={messages} />
+          <Box mt={8}>
+            <TextInputForm onSendMessage={onSendMessage} />
+          </Box>
+        </Container>
+      </Box>
+    </PageTransition>
   );
 }
 

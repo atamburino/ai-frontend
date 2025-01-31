@@ -22,7 +22,7 @@ function Header() {
         <Flex justify="space-between" align="center">
           <Link as={RouterLink} to="/" _hover={{ textDecoration: 'none', opacity: 0.8 }} transition="all 0.2s">
             <Flex align="center" gap={2}>
-              <Heading size="md">AnointedAI 🤖💫</Heading>
+              <Heading size="md">AnointedAI 🤖✨</Heading>
               <Text fontSize="sm" color="gray.500">Turn on holy mode</Text>
             </Flex>
           </Link>

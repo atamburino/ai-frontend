@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   VStack,
@@ -11,19 +11,25 @@ import {
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 function TextInputForm({ 
-  inputText, 
-  setInputText, 
-  onSubmit,
+  onSendMessage,
   placeholder = "Type your message here...",
   buttonText = "Send",
   isLoading = false
 }) {
+  const [inputText, setInputText] = useState('');
   const bgColor = useColorModeValue('white', 'gray.700');
   const inputBg = useColorModeValue('gray.100', 'gray.600');
 
+  const handleSubmit = () => {
+    if (inputText.trim() && !isLoading) {
+      onSendMessage(inputText);
+      setInputText('');
+    }
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey && inputText.trim() && !isLoading) {
-      onSubmit();
+      handleSubmit();
     }
   };
 
@@ -46,7 +52,7 @@ function TextInputForm({
           <Button
             colorScheme="blue"
             size="lg"
-            onClick={onSubmit}
+            onClick={handleSubmit}
             isDisabled={!inputText.trim() || isLoading}
             minW={{ base: '44px', md: '100px' }}
             px={{ base: 0, md: 4 }}

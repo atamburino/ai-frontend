@@ -14,6 +14,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 import { FaReact, FaNode } from 'react-icons/fa';
 import { SiChakraui, SiOpenai, SiJavascript, SiExpress } from 'react-icons/si';
+import PageTransition from '../components/PageTransition';
 
 function TechCard({ icon, title, description }) {
   const bgColor = useColorModeValue('white', 'gray.700');
@@ -74,81 +75,83 @@ function LandingPage() {
   ];
 
   return (
-    <Box py={20}>
-      <Container maxW="container.xl">
-        <VStack spacing={12} align="stretch">
-          {/* Hero Section */}
-          <VStack spacing={6} textAlign="center">
-            <Heading 
-              size="2xl" 
-              bgGradient="linear(to-r, blue.400, purple.500)" 
-              bgClip="text"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              gap={2}
-            >
-              AnointedAI 🤖💫
-            </Heading>
-            <Text fontSize="xl" maxW="2xl" color={useColorModeValue('gray.600', 'gray.300')}>
-              Turn on holy mode and get your scripture knowledge leveled up. 
-              We're making Bible study lit with AI-powered divine wisdom 🙏✨
-            </Text>
-            <Button
-              as={RouterLink}
-              to="/chat"
-              size="lg"
-              colorScheme="blue"
-              px={8}
-              mt={4}
-              bgGradient="linear(to-r, blue.400, purple.500)"
-              _hover={{
-                bgGradient: "linear(to-r, blue.500, purple.600)",
-              }}
-            >
-              Turn On Holy Mode
-            </Button>
+    <PageTransition>
+      <Box py={20}>
+        <Container maxW="container.xl">
+          <VStack spacing={12} align="stretch">
+            {/* Hero Section */}
+            <VStack spacing={6} textAlign="center">
+              <Heading 
+                size="2xl" 
+                bgGradient="linear(to-r, blue.400, purple.500)" 
+                bgClip="text"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                gap={2}
+              >
+                AnointedAI 🤖✨
+              </Heading>
+              <Text fontSize="xl" maxW="2xl" color={useColorModeValue('gray.600', 'gray.300')}>
+                Turn on holy mode and get your scripture knowledge leveled up. 
+                We're making Bible study lit with AI-powered divine wisdom 🙏✨
+              </Text>
+              <Button
+                as={RouterLink}
+                to="/chat"
+                size="lg"
+                colorScheme="blue"
+                px={8}
+                mt={4}
+                bgGradient="linear(to-r, blue.400, purple.500)"
+                _hover={{
+                  bgGradient: "linear(to-r, blue.500, purple.600)",
+                }}
+              >
+                Turn On Holy Mode
+              </Button>
+            </VStack>
+
+            {/* Tech Stack Section */}
+            <Box>
+              <Heading size="xl" textAlign="center" mb={10}>
+                Blessed Tech Stack
+              </Heading>
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+                {techStack.map((tech, index) => (
+                  <TechCard key={index} {...tech} />
+                ))}
+              </SimpleGrid>
+            </Box>
+
+            {/* Features Section */}
+            <Box>
+              <Heading size="xl" textAlign="center" mb={10}>
+                Divine Features
+              </Heading>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+                <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
+                  <Heading size="md" mb={4}>🎯 Scripture-Focused</Heading>
+                  <Text>Pure Bible content only, no cap. We keep it holy and real.</Text>
+                </Box>
+                <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
+                  <Heading size="md" mb={4}>🗣️ Gen Z Vibes</Heading>
+                  <Text>Understanding scripture has never been this lit fam!</Text>
+                </Box>
+                <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
+                  <Heading size="md" mb={4}>🤖 AI Blessed</Heading>
+                  <Text>OpenAI's GPT bringing that divine wisdom with modern sauce.</Text>
+                </Box>
+                <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
+                  <Heading size="md" mb={4}>⚡ Instant Wisdom</Heading>
+                  <Text>Get your answers faster than Noah built the ark!</Text>
+                </Box>
+              </SimpleGrid>
+            </Box>
           </VStack>
-
-          {/* Tech Stack Section */}
-          <Box>
-            <Heading size="xl" textAlign="center" mb={10}>
-              Blessed Tech Stack
-            </Heading>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-              {techStack.map((tech, index) => (
-                <TechCard key={index} {...tech} />
-              ))}
-            </SimpleGrid>
-          </Box>
-
-          {/* Features Section */}
-          <Box>
-            <Heading size="xl" textAlign="center" mb={10}>
-              Divine Features
-            </Heading>
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-              <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                <Heading size="md" mb={4}>🎯 Scripture-Focused</Heading>
-                <Text>Pure Bible content only, no cap. We keep it holy and real.</Text>
-              </Box>
-              <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                <Heading size="md" mb={4}>🗣️ Gen Z Vibes</Heading>
-                <Text>Understanding scripture has never been this lit fam!</Text>
-              </Box>
-              <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                <Heading size="md" mb={4}>🤖 AI Blessed</Heading>
-                <Text>OpenAI's GPT bringing that divine wisdom with modern sauce.</Text>
-              </Box>
-              <Box p={6} borderRadius="lg" bg={useColorModeValue('blue.50', 'blue.900')}>
-                <Heading size="md" mb={4}>⚡ Instant Wisdom</Heading>
-                <Text>Get your answers faster than Noah built the ark!</Text>
-              </Box>
-            </SimpleGrid>
-          </Box>
-        </VStack>
-      </Container>
-    </Box>
+        </Container>
+      </Box>
+    </PageTransition>
   );
 }
 
