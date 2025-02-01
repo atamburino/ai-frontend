@@ -37,16 +37,30 @@ function Header() {
           <Link 
             as={RouterLink} 
             to="/" 
-            _hover={{ textDecoration: 'none', transform: 'scale(1.02)' }} 
-            transition="all 0.2s"
+            _hover={{ textDecoration: 'none' }}
           >
-            <Flex align="center" gap={2}>
+            <Flex 
+              align="center" 
+              gap={2}
+              transition="all 0.3s"
+              _hover={{ transform: 'translateY(-2px)' }}
+            >
               <Heading 
                 size="md"
                 bgGradient="linear(to-r, blue.400, purple.500)"
                 bgClip="text"
+                display="flex"
+                alignItems="center"
+                gap={2}
               >
-                AnointedAI 🤖✨
+                AnointedAI
+                <Text 
+                  as="span"
+                  transition="all 0.3s"
+                  _hover={{ transform: 'scale(1.1)' }}
+                >
+                  🤖✨
+                </Text>
               </Heading>
               <Text 
                 fontSize="sm" 
@@ -63,8 +77,10 @@ function Header() {
               size="sm"
               onClick={toggleColorMode}
               variant="ghost"
+              transition="all 0.3s"
               _hover={{
                 bg: useColorModeValue('purple.50', 'purple.900'),
+                transform: 'rotate(180deg)',
               }}
             >
               <Icon 
